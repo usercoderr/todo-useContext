@@ -7,13 +7,18 @@
     },
     {
       "task": "slaam",
-      "complete": false,
+      "complete": true,
       "id": 3
     },
     {
       "task": "feedback",
-      "complete": false,
+      "complete": true,
       "id": 4
+    },
+    {
+      "task": "fedosei",
+      "complete": false,
+      "id": 5
     }
   ]
 }

@@ -4,9 +4,10 @@ const SearchTodo = ({ searchTodos }) => {
   const [searchValue, setSearchValue] = useState("");
   const handlekSearch = (e) => {
     setSearchValue(e.target.value);
-    searchTodos(searchValue);
   };
-  useEffect(() => {}, [searchValue]);
+  useEffect(() => {
+    searchTodos(searchValue);
+  }, [searchValue]);
   return (
     <div className="search">
       <input

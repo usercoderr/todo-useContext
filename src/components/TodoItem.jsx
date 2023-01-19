@@ -18,10 +18,10 @@ const TodoItem = ({ todo, editTodo, deleteTodo, switchStatus }) => {
     deleteTodo(todo.id);
   };
   const handleClickChange = (e) => {
-    setSwitchValue(e.target.value)
+    setSwitchValue(e.target.value);
     const editObj = {
-      complete: !switchValue
-    }
+      complete: !switchValue,
+    };
     switchStatus(todo.id, editObj);
   };
   return (
@@ -38,7 +38,11 @@ const TodoItem = ({ todo, editTodo, deleteTodo, switchStatus }) => {
       ) : (
         <>
           {todo.task}
-          <input type="checkbox" onChange={handleClickChange} defaultChecked={todo.complete} />
+          <input
+            type="checkbox"
+            onChange={handleClickChange}
+            defaultChecked={todo.complete}
+          />
           <button onClick={handleClick}>Edit</button>
           <button onClick={handleClickDelete}>Delete</button>
         </>
