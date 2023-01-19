@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-const TodoItem = ({ todo, editTodo }) => {
+const TodoItem = ({ todo, editTodo, deleteTodo, switchStatus }) => {
+  const [switchValue, setSwitchValue] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [editValue, setEditValue] = useState(todo.task);
   const handleClick = () => {
@@ -12,6 +13,16 @@ const TodoItem = ({ todo, editTodo }) => {
     };
     editTodo(editObj, todo.id);
     setIsEdit(!isEdit);
+  };
+  const handleClickDelete = () => {
+    deleteTodo(todo.id);
+  };
+  const handleClickChange = (e) => {
+    setSwitchValue(e.target.value)
+    const editObj = {
+      complete: !switchValue
+    }
+    switchStatus(todo.id, editObj);
   };
   return (
     <li key={todo.task}>
@@ -27,11 +38,11 @@ const TodoItem = ({ todo, editTodo }) => {
       ) : (
         <>
           {todo.task}
-          <input type="checkbox" defaultChecked={todo.complete} />
+          <input type="checkbox" onChange={handleClickChange} defaultChecked={todo.complete} />
           <button onClick={handleClick}>Edit</button>
+          <button onClick={handleClickDelete}>Delete</button>
         </>
       )}
-      <button>Delete</button>
     </li>
   );
 };

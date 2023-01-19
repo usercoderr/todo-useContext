@@ -1,0 +1,20 @@
+.app{
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+ul{
+    padding: 0;
+}
+.filter-component{
+    display: flex;
+    margin: 1em 0em;
+    
+}
+
+.filter_btn.active{
+    background-color: rgb(15, 97, 168);
+    border: none;
+    color: white;
+}
