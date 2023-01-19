@@ -4,12 +4,13 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FilterTodo } from "./components/FilterTodo";
+import { SearchTodo } from "./components/SearchTodo";
 
 function App() {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
     getTodo();
-  }, [todos]);
+  }, []);
 
   const getTodo = async () => {
     const { data } = await axios("http://localhost:8000/todos");
@@ -20,23 +21,58 @@ function App() {
     setTodos([...todos, obj]);
   };
   const editTodo = async (obj, id) => {
-    await axios.patch(
-      `http://localhost:8000/todos/${id}`,
-      obj
-    );
-   
+    const {data} = await axios.patch(`http://localhost:8000/todos/${id}`, obj);
+    const editTodos = todos.map((todo) => {
+      if (todo.id === data.id) {
+        return data;
+      }
+      return todo;
+    });
+
+    setTodos(editTodos)
   };
   const deleteTodo = async (id) => {
     await axios.delete(`http://localhost:8000/todos/${id}`);
-    
+    const deleteTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(deleteTodos);
+
   };
   const switchStatus = async (id, obj) => {
-    await axios.patch(`http://localhost:8000/todos/${id}`, obj);
+    const {data} = await axios.patch(`http://localhost:8000/todos/${id}`, obj);
+    const switchTodos = todos.map((todo) => {
+      if (todo.id === data.id) {
+        return data;
+      }
+      return todo;
+    });
+    setTodos(switchTodos);
+
   };
+  const filterTodos = async (filterStatus) => {
+    let filterQuery;
+    switch (filterStatus) {
+      case "completed":
+        filterQuery = "?complete=true";
+        break;
+      case "not_completed":
+        filterQuery = "?complete=false";
+        break;
+      default:
+        filterQuery = "";
+    }
+    const { data } = await axios(`http://localhost:8000/todos${filterQuery}`);
+    console.log(data);
+    setTodos(data);
+  };
+  const searchTodos = async (searchStatus) => {
+    const {data} =  await axios(`http://localhost:8000/todos?q=${searchStatus}`);
+    console.log(data);
+  }
   return (
     <div className="app">
       <AddTodo addTodo={addTodo} />
-      <FilterTodo/>
+      <FilterTodo filterTodos={filterTodos} />
+      <SearchTodo searchTodos={searchTodos}/>
       <TodoList
         deleteTodo={deleteTodo}
         switchStatus={switchStatus}

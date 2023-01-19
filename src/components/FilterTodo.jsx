@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-const FilterTodo = () => {
+const FilterTodo = ({ filterTodos }) => {
   const [active, setActive] = useState("all");
   const handleClick = (filterStatus) => {
     setActive(filterStatus);
-    console.log(filterStatus);
+    filterTodos(filterStatus);
   };
   return (
     <div className="filter-component">

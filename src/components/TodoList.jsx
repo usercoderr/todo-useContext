@@ -5,7 +5,7 @@ const TodoList = ({ todos, editTodo, deleteTodo, switchStatus }) => {
   return (
     <ul>
       {todos.map((todo) => (
-        <TodoItem editTodo={editTodo} switchStatus={switchStatus} deleteTodo={deleteTodo} key={todo.task} todo={todo} />
+        <TodoItem editTodo={editTodo} switchStatus={switchStatus} deleteTodo={deleteTodo} key={todo.id} todo={todo} />
       ))}
     </ul>
   );
