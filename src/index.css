@@ -18,11 +18,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-li {
-  display: flex;
-  width: 260px;
-  justify-content: space-around;
-  list-style: none;
-  padding: 0.2em;
-  border: 1px solid black;
-}
+

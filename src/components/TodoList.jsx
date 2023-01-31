@@ -1,7 +1,10 @@
 import React from "react";
+import { useContext } from "react";
+import { todoContext } from "../contexts/TodoContext";
 import { TodoItem } from "./TodoItem";
 
-const TodoList = ({ todos, editTodo, deleteTodo, switchStatus }) => {
+const TodoList = ({ editTodo, deleteTodo, switchStatus }) => {
+  const { todo: todos } = useContext(todoContext);
   return (
     <ul>
       {todos.map((todo) => (
@@ -9,7 +12,7 @@ const TodoList = ({ todos, editTodo, deleteTodo, switchStatus }) => {
           editTodo={editTodo}
           switchStatus={switchStatus}
           deleteTodo={deleteTodo}
-          key={todo.id}
+          key={todo.task}
           todo={todo}
         />
       ))}

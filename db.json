@@ -1,24 +1,9 @@
 {
   "todos": [
     {
-      "task": "task false",
-      "complete": false,
-      "id": 2
-    },
-    {
-      "task": "slaam",
-      "complete": true,
-      "id": 3
-    },
-    {
-      "task": "feedback",
-      "complete": true,
-      "id": 4
-    },
-    {
-      "task": "fedosei",
-      "complete": false,
-      "id": 5
+      "id": 1,
+      "task": "Task1",
+      "complete": false
     }
   ]
 }
