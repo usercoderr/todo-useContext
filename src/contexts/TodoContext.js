@@ -33,7 +33,6 @@ const TodoContextProvider = ({ children }) => {
 
   const getTodo = async () => {
     const { data } = await axios("http://localhost:8000/todos");
-
     dispatch({
       type: "GET_TODO",
       payload: data,
@@ -42,7 +41,6 @@ const TodoContextProvider = ({ children }) => {
 
   const addTodo = async (obj) => {
     const { data } = await axios.post("http://localhost:8000/todos", obj);
-
     dispatch({
       type: "ADD_TODO",
       payload: data,

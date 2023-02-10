@@ -13,6 +13,7 @@ const TodoItem = ({ todo }) => {
   const handleClick = () => {
     setIsEdit(!isEdit);
   };
+
   const handleClickSave = () => {
     const editObj = {
       task: editValue,

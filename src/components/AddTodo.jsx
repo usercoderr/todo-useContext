@@ -19,7 +19,7 @@ const AddTodo = () => {
         value={addValue}
         type="text"
         onChange={(e) => setAddValue(e.target.value)}
-      />
+      />˝
       <button onClick={handleClick}>
         <AiOutlinePlus color="white" size={20} />
       </button>
